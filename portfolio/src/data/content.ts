@@ -4,6 +4,8 @@ export const site = {
   tagline:
     'Jerusalem Girma. Building scalable web applications and decentralized solutions. Based in Addis Ababa.',
   email: 'laviee1434@gmail.com',
+  github: 'https://github.com/laviee143',
+  linkedin: 'https://www.linkedin.com/in/jerusalem-girma-a3771b375/',
   phone: '+251 978 64 2454',
   location: 'Addis Ababa, Ethiopia',
   cta: 'See my work',
