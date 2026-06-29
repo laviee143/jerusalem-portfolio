@@ -56,6 +56,23 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: 'asash-ai',
+    title: 'አሳሽ AI (Asash AI)',
+    slug: 'asash-ai-astu-workflow-assistant',
+    description:
+      'An intelligent administrative workflow support assistant for Adama Science and Technology University (ASTU). Leveraging Retrieval-Augmented Generation (RAG), it enables users to query and navigate institutional rules, guidelines, and administrative procedures in natural language.',
+    highlights: [
+      'Retrieval-Augmented Generation (RAG) pipeline for querying university documents',
+      'Context-aware answers with citation of official ASTU guidelines',
+      'Sleek chat interface with search history and workflow suggestions',
+      'Optimized vector embeddings and semantic search mapping',
+    ],
+    tech: ['React', 'Python', 'FastAPI', 'LangChain', 'Vector DB', 'RAG'],
+    github: 'https://github.com/laviee143/CSEC-PROJECT',
+    accent: '#3b82f6',
+    thumbnailLabel: 'AI Administrative Assistant & Chat UI',
+  },
+  {
     id: 'supermarket',
     title: 'Supermarket Management System',
     slug: 'supermarket-management-system',
