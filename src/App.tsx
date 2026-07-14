@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { FloatingNav } from './components/FloatingNav';
+import { Chatbot } from './components/Chatbot';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
       </footer>
 
       <FloatingNav />
+      <Chatbot />
     </>
   );
 }
