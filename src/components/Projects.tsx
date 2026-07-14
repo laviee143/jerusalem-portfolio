@@ -18,20 +18,35 @@ export function Projects() {
                 className="project-card__img"
                 style={{ backgroundColor: project.accent + '22' }}
               >
-                {/* Minimalist visual representation if no image */}
-                <div style={{
-                  width: '100%',
-                  height: '100%',
-                  display: 'grid',
-                  placeItems: 'center',
-                  color: project.accent,
-                  fontSize: '0.8rem',
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: 600,
-                  opacity: 0.5
-                }}>
-                  {`// 0${index + 1} ${project.title}`}
-                </div>
+                {project.screenshot ? (
+                  <img
+                    src={project.screenshot}
+                    alt={`Screenshot of ${project.title}`}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'top',
+                      display: 'block',
+                      borderRadius: 'inherit',
+                    }}
+                  />
+                ) : (
+                  /* Minimalist visual representation if no image */
+                  <div style={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'grid',
+                    placeItems: 'center',
+                    color: project.accent,
+                    fontSize: '0.8rem',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 600,
+                    opacity: 0.5
+                  }}>
+                    {`// 0${index + 1} ${project.title}`}
+                  </div>
+                )}
               </div>
 
               <h3 className="project-card__title">{project.title}</h3>

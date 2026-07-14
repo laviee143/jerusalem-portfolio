@@ -50,6 +50,7 @@ export type Project = {
   tech: string[];
   github: string;
   live?: string;
+  screenshot?: string;
   accent: string;
   thumbnailLabel: string;
 };
@@ -137,6 +138,8 @@ export const projects: Project[] = [
     ],
     tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
     github: 'https://github.com/laviee143/library-management-system',
+    live: 'https://library-management-system-ten-hazel.vercel.app',
+    screenshot: '/images/library-screenshot.png',
     accent: '#34d399',
     thumbnailLabel: 'Library catalog & admin dashboard',
   },
