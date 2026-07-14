@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from '@google/genai';
 import { site, about, skills, projects } from '../data/content';
 
 /* ── Build a rich system prompt from portfolio data ── */
@@ -31,18 +31,22 @@ ${projects.map(p =>
     `• ${p.title}: ${p.description} | Tech: ${p.tech.join(', ')}${p.live ? ` | Live: ${p.live}` : ''} | GitHub: ${p.github}`
 ).join('\n')}
 
-=== SUGGESTED QUESTIONS ===
-- What are Jerusalem's skills?
-- Tell me about her projects
-- How can I contact Jerusalem?
-- What is her background?
-- Is she available for work?
+=== CONTACT ===
+Email: ${site.email}
+Phone: ${site.phone}
+GitHub: ${site.github}
+LinkedIn: ${site.linkedin}
 `.trim();
 
 /* ── Types ── */
 type Message = {
     role: 'user' | 'assistant';
     text: string;
+};
+
+type ChatTurn = {
+    role: 'user' | 'model';
+    parts: { text: string }[];
 };
 
 const QUICK_PROMPTS = [
@@ -65,8 +69,7 @@ export function Chatbot() {
     const [pulse, setPulse] = useState(true);
     const bottomRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-    const chatRef = useRef<ReturnType<InstanceType<typeof GoogleGenerativeAI>['getGenerativeModel']> | null>(null);
-    const historyRef = useRef<{ role: string; parts: { text: string }[] }[]>([]);
+    const historyRef = useRef<ChatTurn[]>([]);
 
     /* Stop pulsing after 6 s */
     useEffect(() => {
@@ -84,17 +87,37 @@ export function Chatbot() {
         if (open) setTimeout(() => inputRef.current?.focus(), 100);
     }, [open]);
 
-    /* Init Gemini chat */
-    const getChat = () => {
-        if (chatRef.current) return chatRef.current;
-        const key = import.meta.env.VITE_GEMINI_API_KEY;
-        if (!key || key === 'YOUR_GEMINI_API_KEY_HERE') return null;
-        const genAI = new GoogleGenerativeAI(key);
-        chatRef.current = genAI.getGenerativeModel({
-            model: 'gemini-1.5-flash',
-            systemInstruction: SYSTEM_PROMPT,
-        });
-        return chatRef.current;
+    const getFallbackAnswer = (text: string): string | null => {
+        const t = text.toLowerCase();
+
+        if (t.match(/name|who (is|are) (she|jerusalem)/))
+            return `Her name is **${site.name}** — a Software Engineering student based in ${site.location}. ${site.headline}.`;
+
+        if (t.match(/contact|email|phone|reach|hire/))
+            return `You can reach Jerusalem at:\n📧 Email: ${site.email}\n📞 Phone: ${site.phone}\n💼 LinkedIn: ${site.linkedin}\n🐙 GitHub: ${site.github}`;
+
+        if (t.match(/skill|know|technolog|stack|language/))
+            return `Jerusalem's skills include:\n\n🎨 Frontend: ${skills.filter(s => s.category === 'frontend').map(s => s.name).join(', ')}\n\n⚙️ Backend: ${skills.filter(s => s.category === 'backend').map(s => s.name).join(', ')}`;
+
+        if (t.match(/project|work|built|portfolio|app/))
+            return `Jerusalem has built ${projects.length} projects:\n\n${projects.map(p => `• **${p.title}** — ${p.tech.join(', ')}${p.live ? ` | [Live site](${p.live})` : ''}`).join('\n')}`;
+
+        if (t.match(/location|where|based|live|country|city/))
+            return `Jerusalem is based in **${site.location}**.`;
+
+        if (t.match(/available|open|job|work|opportunit|hire|freelan/))
+            return `Jerusalem is a Software Engineering student at ASTU who is open to opportunities! Feel free to reach out at ${site.email} or connect on LinkedIn.`;
+
+        if (t.match(/background|about|story|education|university|study/))
+            return about.paragraphs[0];
+
+        if (t.match(/github|code|repo/))
+            return `Jerusalem's GitHub: ${site.github} — feel free to explore her repositories!`;
+
+        if (t.match(/linkedin/))
+            return `Jerusalem's LinkedIn: ${site.linkedin}`;
+
+        return null;
     };
 
     const send = async (text: string) => {
@@ -105,35 +128,60 @@ export function Chatbot() {
         setLoading(true);
 
         try {
-            const model = getChat();
-            if (!model) {
+            const key = import.meta.env.VITE_GEMINI_API_KEY;
+            if (!key || key === 'YOUR_GEMINI_API_KEY_HERE') {
                 setMessages(prev => [
                     ...prev,
-                    {
-                        role: 'assistant',
-                        text: "⚠️ No API key configured yet. Please add your Gemini API key to the `.env` file to enable the chatbot.",
-                    },
+                    { role: 'assistant', text: "⚠️ No API key configured. Please add your Gemini API key to the .env file." },
                 ]);
                 setLoading(false);
                 return;
             }
 
-            historyRef.current.push({ role: 'user', parts: [{ text: text.trim() }] });
+            const ai = new GoogleGenAI({ apiKey: key });
 
-            const chat = model.startChat({ history: historyRef.current.slice(0, -1) });
-            const result = await chat.sendMessage(text.trim());
-            const reply = result.response.text();
+            // Build contents array with full history + new message
+            const contents = [
+                ...historyRef.current,
+                { role: 'user' as const, parts: [{ text: text.trim() }] },
+            ];
 
-            historyRef.current.push({ role: 'model', parts: [{ text: reply }] });
-            setMessages(prev => [...prev, { role: 'assistant', text: reply }]);
-        } catch {
-            setMessages(prev => [
-                ...prev,
-                {
-                    role: 'assistant',
-                    text: "Sorry, I ran into an issue. Please try again in a moment.",
+            const response = await ai.models.generateContent({
+                model: 'gemini-2.0-flash',
+                contents,
+                config: {
+                    systemInstruction: SYSTEM_PROMPT,
                 },
-            ]);
+            });
+
+            const reply = response.text ?? "I couldn't generate a response. Please try again.";
+
+            // Save to history
+            historyRef.current.push(
+                { role: 'user', parts: [{ text: text.trim() }] },
+                { role: 'model', parts: [{ text: reply }] }
+            );
+
+            setMessages(prev => [...prev, { role: 'assistant', text: reply }]);
+        } catch (err) {
+            console.error('[Chatbot error]', err);
+            // Try keyword fallback before showing error
+            const fallback = getFallbackAnswer(text.trim());
+            if (fallback) {
+                setMessages(prev => [...prev, { role: 'assistant', text: fallback }]);
+            } else {
+                const errMsg = err instanceof Error ? err.message : String(err);
+                const isQuota = errMsg.includes('429') || errMsg.includes('quota') || errMsg.includes('exceeded');
+                setMessages(prev => [
+                    ...prev,
+                    {
+                        role: 'assistant',
+                        text: isQuota
+                            ? "⚠️ AI limit reached for now. Try asking about Jerusalem's skills, projects, or how to contact her — I can still answer those!"
+                            : "Something went wrong. Please try again in a moment.",
+                    },
+                ]);
+            }
         } finally {
             setLoading(false);
         }
@@ -152,7 +200,7 @@ export function Chatbot() {
             <button
                 className="chatbot-fab"
                 onClick={() => { setOpen(o => !o); setPulse(false); }}
-                aria-label={open ? 'Close chat' : 'Open chat with Jerusalem\'s AI'}
+                aria-label={open ? 'Close chat' : "Open chat with Jerusalem's AI"}
                 title="Chat with Jerusalem's AI"
             >
                 {open ? (

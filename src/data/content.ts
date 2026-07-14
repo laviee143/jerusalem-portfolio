@@ -22,7 +22,7 @@ export const about = {
   avatarAlt:
     'Professional portrait of Jerusalem Girma — hijabi woman, warm smile, soft studio lighting',
   paragraphs: [
-    'Currently pursuing a BSc in Software Engineering at Adama Science and Technology University (ASTU), I am passionate about developing efficient and user-focused software solutions. My experience includes web application development, backend systems, and modern software engineering practices. I am also interested in emerging technologies, including blockchain and decentralized applications, and enjoy applying innovative ideas to real-world challenges.',
+    'Currently pursuing a BSc in Software Engineering at Adama Science and Technology University (ASTU), I am passionate about developing efficient and user-focused software solutions. My experience includes web application development, backend systems, and modern software engineering practices. I am also interested in emerging technologies and enjoy applying innovative ideas to real-world challenges.',
     'What keeps me going is the mix of logic and creativity in this field. I enjoy breaking down a problem, sketching a simple plan, and shipping something that works—even if the first version is rough. Whether it is a campus tool, a pharmacy platform, or a job board, I care about writing code that teammates can read and users can trust.',
     'Outside of class, I contribute to student developer communities, pair with friends on features, and document what I learn so I do not repeat the same mistakes twice. I am especially drawn to full-stack web development and products that make everyday tasks easier for students and small teams.',
   ],
