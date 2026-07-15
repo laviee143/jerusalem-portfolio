@@ -28,8 +28,8 @@ function BootcampMockup() {
       {/* Navbar */}
       <rect x="18" y="18" width="484" height="36" rx="6" fill="#1a3a2a" />
       <rect x="30" y="28" width="60" height="8" rx="2" fill="#4ade80" opacity="0.9" />
-      {['Dashboard','Cohorts','Sessions','Mentors'].map((_, i) => (
-        <rect key={i} x={110 + i * 80} y="30" width="60" height="6" rx="2" fill="#fff" opacity={i===0 ? 0.9 : 0.4} />
+      {['Dashboard', 'Cohorts', 'Sessions', 'Mentors'].map((_, i) => (
+        <rect key={i} x={110 + i * 80} y="30" width="60" height="6" rx="2" fill="#fff" opacity={i === 0 ? 0.9 : 0.4} />
       ))}
       <rect x="440" y="26" width="52" height="16" rx="8" fill="#2d9e5f" />
       <rect x="448" y="30" width="36" height="6" rx="2" fill="#fff" opacity="0.9" />
@@ -56,26 +56,26 @@ function BootcampMockup() {
           <rect x={40 + i * 116} y="122" width="60" height="5" rx="2" fill="#666" opacity="0.6" />
           <rect x={40 + i * 116} y="132" width="40" height="14" rx="3" fill={c.color} opacity="0.9" />
           <rect x={40 + i * 116} y="152" width="70" height="4" rx="2" fill={c.color} opacity="0.15" />
-          <rect x={40 + i * 116} y="152" width={[55,70,40,60][i]} height="4" rx="2" fill={c.color} opacity="0.5" />
+          <rect x={40 + i * 116} y="152" width={[55, 70, 40, 60][i]} height="4" rx="2" fill={c.color} opacity="0.5" />
         </g>
       ))}
 
       {/* Table */}
       <rect x="30" y="182" width="472" height="16" rx="4" fill="#e8f5ee" />
-      {['Name','Cohort','Progress','Status'].map((_, i) => (
-        <rect key={i} x={[40,140,260,380][i]} y="187" width={[80,90,70,60][i]} height="5" rx="2" fill="#2d9e5f" opacity="0.7" />
+      {['Name', 'Cohort', 'Progress', 'Status'].map((_, i) => (
+        <rect key={i} x={[40, 140, 260, 380][i]} y="187" width={[80, 90, 70, 60][i]} height="5" rx="2" fill="#2d9e5f" opacity="0.7" />
       ))}
-      {[0,1,2,3].map(i => (
+      {[0, 1, 2, 3].map(i => (
         <g key={i}>
-          <rect x="30" y={202 + i * 18} width="472" height="16" rx="3" fill={i%2===0 ? '#fff' : '#f9fafb'} />
+          <rect x="30" y={202 + i * 18} width="472" height="16" rx="3" fill={i % 2 === 0 ? '#fff' : '#f9fafb'} />
           <rect x="40" y={207 + i * 18} width="70" height="5" rx="2" fill="#333" opacity="0.6" />
           <rect x="140" y={207 + i * 18} width="80" height="5" rx="2" fill="#555" opacity="0.4" />
           <rect x="260" y={208 + i * 18} width="80" height="4" rx="2" fill="#e5e7eb" />
-          <rect x="260" y={208 + i * 18} width={[60,45,70,30][i]} height="4" rx="2" fill="#2d9e5f" opacity="0.7" />
+          <rect x="260" y={208 + i * 18} width={[60, 45, 70, 30][i]} height="4" rx="2" fill="#2d9e5f" opacity="0.7" />
           <rect x="380" y={205 + i * 18} width="50" height="9" rx="4"
-            fill={['#dcfce7','#fef9c3','#dcfce7','#fee2e2'][i]} />
+            fill={['#dcfce7', '#fef9c3', '#dcfce7', '#fee2e2'][i]} />
           <rect x="388" y={208 + i * 18} width="34" height="4" rx="2"
-            fill={['#16a34a','#ca8a04','#16a34a','#dc2626'][i]} opacity="0.8" />
+            fill={['#16a34a', '#ca8a04', '#16a34a', '#dc2626'][i]} opacity="0.8" />
         </g>
       ))}
     </DeviceFrame>
@@ -90,8 +90,8 @@ function PharmalinkMockup() {
       <rect x="18" y="18" width="484" height="36" rx="6" fill="#fff" />
       <rect x="18" y="50" width="484" height="1" fill="#e5e7eb" />
       <rect x="30" y="26" width="70" height="10" rx="2" fill="#7c3aed" opacity="0.9" />
-      {['Inventory','Requests','Transfer','Analytics'].map((_, i) => (
-        <rect key={i} x={120 + i * 82} y="28" width="64" height="6" rx="2" fill="#374151" opacity={i===0 ? 0.8 : 0.35} />
+      {['Inventory', 'Requests', 'Transfer', 'Analytics'].map((_, i) => (
+        <rect key={i} x={120 + i * 82} y="28" width="64" height="6" rx="2" fill="#374151" opacity={i === 0 ? 0.8 : 0.35} />
       ))}
       <rect x="450" y="24" width="42" height="18" rx="9" fill="#7c3aed" />
       <rect x="458" y="29" width="26" height="6" rx="2" fill="#fff" opacity="0.9" />
@@ -111,23 +111,23 @@ function PharmalinkMockup() {
       {/* Medicine grid */}
       {[
         { name: 'Amoxicillin', stock: '240 units', color: '#7c3aed', bg: '#faf5ff', pct: 75 },
-        { name: 'Ibuprofen',   stock: '85 units',  color: '#f59e0b', bg: '#fffbeb', pct: 28 },
-        { name: 'Metformin',   stock: '320 units', color: '#0d9488', bg: '#f0fdfa', pct: 90 },
-        { name: 'Lisinopril',  stock: '60 units',  color: '#ef4444', bg: '#fef2f2', pct: 20 },
+        { name: 'Ibuprofen', stock: '85 units', color: '#f59e0b', bg: '#fffbeb', pct: 28 },
+        { name: 'Metformin', stock: '320 units', color: '#0d9488', bg: '#f0fdfa', pct: 90 },
+        { name: 'Lisinopril', stock: '60 units', color: '#ef4444', bg: '#fef2f2', pct: 20 },
       ].map((m, i) => {
         const x = 30 + (i % 2) * 238;
         const y = 134 + Math.floor(i / 2) * 60;
         return (
           <g key={i}>
             <rect x={x} y={y} width="228" height="52" rx="8" fill={m.bg} stroke={m.color} strokeWidth="0.8" strokeOpacity="0.3" />
-            <rect x={x+10} y={y+10} width="30" height="30" rx="8" fill={m.color} opacity="0.15" />
-            <rect x={x+16} y={y+21} width="18" height="6" rx="3" fill={m.color} opacity="0.8" />
-            <rect x={x+48} y={y+10} width="100" height="7" rx="2" fill="#1f2937" opacity="0.8" />
-            <rect x={x+48} y={y+22} width="70" height="5" rx="2" fill="#6b7280" opacity="0.6" />
-            <rect x={x+10} y={y+42} width="208" height="4" rx="2" fill="#e5e7eb" />
-            <rect x={x+10} y={y+42} width={208 * m.pct / 100} height="4" rx="2" fill={m.color} opacity="0.7" />
-            <rect x={x+160} y={y+10} width="58" height="16" rx="8" fill={m.color} opacity="0.12" />
-            <rect x={x+166} y={y+14} width="46" height="6" rx="2" fill={m.color} opacity="0.8" />
+            <rect x={x + 10} y={y + 10} width="30" height="30" rx="8" fill={m.color} opacity="0.15" />
+            <rect x={x + 16} y={y + 21} width="18" height="6" rx="3" fill={m.color} opacity="0.8" />
+            <rect x={x + 48} y={y + 10} width="100" height="7" rx="2" fill="#1f2937" opacity="0.8" />
+            <rect x={x + 48} y={y + 22} width="70" height="5" rx="2" fill="#6b7280" opacity="0.6" />
+            <rect x={x + 10} y={y + 42} width="208" height="4" rx="2" fill="#e5e7eb" />
+            <rect x={x + 10} y={y + 42} width={208 * m.pct / 100} height="4" rx="2" fill={m.color} opacity="0.7" />
+            <rect x={x + 160} y={y + 10} width="58" height="16" rx="8" fill={m.color} opacity="0.12" />
+            <rect x={x + 166} y={y + 14} width="46" height="6" rx="2" fill={m.color} opacity="0.8" />
           </g>
         );
       })}
@@ -143,8 +143,8 @@ function JobsearchMockup() {
       <rect x="18" y="18" width="484" height="36" rx="6" fill="#fff" />
       <rect x="18" y="50" width="484" height="1" fill="#e5e7eb" />
       <rect x="30" y="26" width="60" height="10" rx="2" fill="#1d4ed8" opacity="0.9" />
-      {['Find Jobs','Companies','Salaries','Resources'].map((_, i) => (
-        <rect key={i} x={110 + i * 84} y="28" width="66" height="6" rx="2" fill="#374151" opacity={i===0 ? 0.8 : 0.35} />
+      {['Find Jobs', 'Companies', 'Salaries', 'Resources'].map((_, i) => (
+        <rect key={i} x={110 + i * 84} y="28" width="66" height="6" rx="2" fill="#374151" opacity={i === 0 ? 0.8 : 0.35} />
       ))}
       <rect x="430" y="24" width="62" height="18" rx="9" fill="#1d4ed8" />
       <rect x="438" y="29" width="46" height="6" rx="2" fill="#fff" opacity="0.9" />
@@ -166,13 +166,13 @@ function JobsearchMockup() {
       <rect x="438" y="92" width="35" height="4" rx="2" fill="#1d4ed8" opacity="0.3" />
 
       {/* Filter chips */}
-      {['All','Remote','Frontend','Full-time','Junior'].map((_, i) => (
+      {['All', 'Remote', 'Frontend', 'Full-time', 'Junior'].map((_, i) => (
         <g key={i}>
           <rect x={30 + i * 88} y="132" width="80" height="16" rx="8"
-            fill={i===0 ? '#1d4ed8' : '#f3f4f6'}
-            stroke={i===0 ? 'none' : '#e5e7eb'} strokeWidth="1" />
-          <rect x={40 + i * 88} y="137" width={[30,36,44,40,30][i]} height="5" rx="2"
-            fill={i===0 ? '#fff' : '#6b7280'} opacity="0.8" />
+            fill={i === 0 ? '#1d4ed8' : '#f3f4f6'}
+            stroke={i === 0 ? 'none' : '#e5e7eb'} strokeWidth="1" />
+          <rect x={40 + i * 88} y="137" width={[30, 36, 44, 40, 30][i]} height="5" rx="2"
+            fill={i === 0 ? '#fff' : '#6b7280'} opacity="0.8" />
         </g>
       ))}
 
@@ -184,8 +184,8 @@ function JobsearchMockup() {
       ].map((job, i) => (
         <g key={i}>
           <rect x="30" y={156 + i * 36} width="462" height="30" rx="7"
-            fill={i===0 ? job.bg : '#fff'}
-            stroke={i===0 ? job.border : '#f3f4f6'} strokeWidth="1" />
+            fill={i === 0 ? job.bg : '#fff'}
+            stroke={i === 0 ? job.border : '#f3f4f6'} strokeWidth="1" />
           <rect x="40" y={162 + i * 36} width="20" height="20" rx="6" fill={job.color} opacity="0.15" />
           <rect x="44" y={168 + i * 36} width="12" height="8" rx="2" fill={job.color} opacity="0.7" />
           <rect x="68" y={162 + i * 36} width="110" height="7" rx="2" fill="#111827" opacity="0.8" />
@@ -196,10 +196,10 @@ function JobsearchMockup() {
           <rect x="266" y={166 + i * 36} width="38" height="4" rx="2" fill="#6b7280" opacity="0.6" />
           <rect x="360" y={163 + i * 36} width="80" height="8" rx="2" fill={job.color} opacity="0.8" />
           <rect x="450" y={162 + i * 36} width="36" height="12" rx="6"
-            fill={i===0 ? job.color : '#f3f4f6'}
-            stroke={i===0 ? 'none' : '#e5e7eb'} strokeWidth="1" />
+            fill={i === 0 ? job.color : '#f3f4f6'}
+            stroke={i === 0 ? 'none' : '#e5e7eb'} strokeWidth="1" />
           <rect x="456" y={165 + i * 36} width="24" height="5" rx="2"
-            fill={i===0 ? '#fff' : '#9ca3af'} opacity="0.9" />
+            fill={i === 0 ? '#fff' : '#9ca3af'} opacity="0.9" />
         </g>
       ))}
     </DeviceFrame>
@@ -214,8 +214,8 @@ function CampusMockup() {
       <rect x="18" y="18" width="484" height="36" rx="6" fill="#fff" />
       <rect x="18" y="50" width="484" height="1" fill="#e5e7eb" />
       <rect x="30" y="26" width="80" height="10" rx="2" fill="#ea580c" opacity="0.9" />
-      {['Feed','Events','Clubs','Notices'].map((_, i) => (
-        <rect key={i} x={130 + i * 76} y="28" width="58" height="6" rx="2" fill="#374151" opacity={i===0 ? 0.8 : 0.35} />
+      {['Feed', 'Events', 'Clubs', 'Notices'].map((_, i) => (
+        <rect key={i} x={130 + i * 76} y="28" width="58" height="6" rx="2" fill="#374151" opacity={i === 0 ? 0.8 : 0.35} />
       ))}
       <rect x="440" y="24" width="52" height="18" rx="9" fill="#ea580c" />
       <rect x="448" y="29" width="36" height="6" rx="2" fill="#fff" opacity="0.9" />
@@ -254,13 +254,13 @@ function CampusMockup() {
       {/* Posts */}
       {[
         { cat: 'Event', catColor: '#ea580c', catBg: '#fff7ed', border: '#fed7aa', h1: 160, h2: 200 },
-        { cat: 'Club',  catColor: '#16a34a', catBg: '#f0fdf4', border: '#bbf7d0', h1: 120, h2: 180 },
-        { cat: 'Notice',catColor: '#2563eb', catBg: '#eff6ff', border: '#bfdbfe', h1: 140, h2: 160 },
+        { cat: 'Club', catColor: '#16a34a', catBg: '#f0fdf4', border: '#bbf7d0', h1: 120, h2: 180 },
+        { cat: 'Notice', catColor: '#2563eb', catBg: '#eff6ff', border: '#bfdbfe', h1: 140, h2: 160 },
       ].map((post, i) => (
         <g key={i}>
           <rect x="30" y={164 + i * 34} width="462" height="28" rx="7"
-            fill={i===0 ? post.catBg : '#fff'}
-            stroke={i===0 ? post.border : '#f3f4f6'} strokeWidth="1" />
+            fill={i === 0 ? post.catBg : '#fff'}
+            stroke={i === 0 ? post.border : '#f3f4f6'} strokeWidth="1" />
           <circle cx="46" cy={178 + i * 34} r="9" fill={post.catColor} opacity="0.2" />
           <circle cx="46" cy={178 + i * 34} r="5" fill={post.catColor} opacity="0.5" />
           <rect x="62" y={170 + i * 34} width={post.h1} height="6" rx="2" fill="#111827" opacity="0.75" />
@@ -275,13 +275,34 @@ function CampusMockup() {
   );
 }
 
+/* ─── UniConnect ─── */
+function UniconnectMockup() {
+  return (
+    <DeviceFrame>
+      {/* Render the real screenshot as a foreignObject-free <image> fill */}
+      <image
+        href="/images/uniconnect-screenshot.png"
+        x="18"
+        y="18"
+        width="484"
+        height="264"
+        preserveAspectRatio="xMidYMid slice"
+        style={{ borderRadius: 6 }}
+      />
+      {/* Subtle blue overlay tint to blend with the frame */}
+      <rect x="18" y="18" width="484" height="264" rx="6" fill="#2563eb" opacity="0.04" />
+    </DeviceFrame>
+  );
+}
+
 /* ─── Router ─── */
 export function ProjectThumbnail({ project }: Props) {
   const map: Record<string, React.ReactNode> = {
-    bootcamp:   <BootcampMockup />,
+    bootcamp: <BootcampMockup />,
     pharmalink: <PharmalinkMockup />,
-    jobsearch:  <JobsearchMockup />,
-    campus:     <CampusMockup />,
+    jobsearch: <JobsearchMockup />,
+    campus: <CampusMockup />,
+    uniconnect: <UniconnectMockup />,
   };
 
   return (
